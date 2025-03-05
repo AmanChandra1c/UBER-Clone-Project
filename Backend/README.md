@@ -56,17 +56,18 @@ This endpoint logs in an existing user. It authenticates the user based on the p
 
 ### Body Parameters
 
--   **email**: string (required, must be a valid email)
--   **password**: string (required, at least 6 characters)
+- **email**: string (required, must be a valid email)
+- **password**: string (required, at least 6 characters)
 
 #### Example Request Body
 
 ```json
 {
-    "email": "john.doe@example.com",
-    "password": "securePassword123"
+  "email": "john.doe@example.com",
+  "password": "securePassword123"
 }
 ```
+
 ## Response
 
 - **fullname**: an object containing:
@@ -75,3 +76,51 @@ This endpoint logs in an existing user. It authenticates the user based on the p
 - **email**: string (required, must be a valid email)
 - **password**: string (required, at least 6 characters)
 - **token**: (string): JWT token
+
+## `/users/profile` Endpoint
+
+## Description
+
+This endpoint retrieves the profile information of the authenticated user. It requires a valid JWT token in the request header.
+
+## HTTP Method
+
+`GET`
+
+## Request
+
+### Headers
+
+- `Authorization`: `Bearer <token>` (required)
+
+## Response
+
+- **fullname**: an object containing:
+  - **firstname**: string
+  - **lastname**: string
+- **email**: string
+- **\_id**: string (user ID)
+
+## `/users/logout` Endpoint
+
+## Description
+
+This endpoint logs out the authenticated user by invalidating the JWT token. It requires a valid JWT token in the request header or cookies.
+
+## HTTP Method
+
+`GET`
+
+## Request
+
+### Headers
+
+- `Authorization`: `Bearer <token>` (required)
+
+### Cookies
+
+- `token`: JWT token (optional, if not provided in headers)
+
+## Response
+
+- `message`: string (Logout confirmation message)
