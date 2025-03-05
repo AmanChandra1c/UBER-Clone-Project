@@ -3,9 +3,10 @@ dotenv.config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const cookieparser = require("cookie-parser");
 const database = require("./DB/db");
 const userRoutes = require("./routes/user.routes");
-const cookieparser = require("cookie-parser");
+const captainRoutes = require("./routes/captain.routes");
 
 // Connect to MongoDB database
 database();
@@ -22,4 +23,10 @@ app.get("/", (req, res) => {
 
 // User routes
 app.use("/users", userRoutes);
+
+// Captain routes
+app.use("/captains", captainRoutes);  
+
+
+
 module.exports = app;

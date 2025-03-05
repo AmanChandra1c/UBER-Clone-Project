@@ -124,3 +124,57 @@ This endpoint logs out the authenticated user by invalidating the JWT token. It 
 ## Response
 
 - `message`: string (Logout confirmation message)
+
+## `/captains/register` Endpoint
+
+## Description
+
+This endpoint registers a new captain into the system. It expects captain details in the request body, hashes the password, creates a captain record, and returns a JSON Web Token (JWT) for authentication.
+
+## HTTP Method
+
+`POST`
+
+## Request
+
+### Body Parameters
+
+- **fullname**: an object containing:
+  - **firstname**: string (required, at least 3 characters)
+  - **lastname**: string (optional, at least 3 characters if provided)
+- **email**: string (required, must be a valid email)
+- **password**: string (required, at least 6 characters)
+- **vehicle**: an object containing:
+  - **color**: string (required, at least 3 characters)
+  - **plate**: string (required, at least 4 characters)
+  - **capacity**: number (required, at least 1)
+  - **vehicleType**: string (required, must be one of "car", "motorcycle", "auto")
+
+#### Example Request Body
+
+```json
+{
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.doe@example.com",
+  "password": "securePassword123",
+  "vehicle": {
+    "color": "red",
+    "plate": "1234ABC",
+    "capacity": 2,
+    "vehicleType": "motorcycle"
+  }
+}
+```
+
+## Response
+
+- **fullname**: an object containing:
+  - **firstname**: string (required, at least 3 characters)
+  - **lastname**: string (optional, at least 3 characters if provided)
+- **email**: string (required, must be a valid email)
+- **password**: string (required, at least 6 characters)
+- **token**: (string): JWT token
+
