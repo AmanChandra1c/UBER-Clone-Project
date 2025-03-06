@@ -178,3 +178,50 @@ This endpoint registers a new captain into the system. It expects captain detail
 - **password**: string (required, at least 6 characters)
 - **token**: (string): JWT token
 
+## `/captains/profile` Endpoint
+
+## Description
+
+This endpoint retrieves the profile information of the authenticated capatain. It requires a valid JWT token in the request header.
+
+## HTTP Method
+
+`GET`
+
+## Request
+
+### Headers
+
+- `Authorization`: `Bearer <token>` (required)
+
+## Response
+
+- **fullname**: an object containing:
+  - **firstname**: string
+  - **lastname**: string
+- **email**: string
+- **\_id**: string (user ID)
+
+## `/captains/logout` Endpoint
+
+## Description
+
+This endpoint logs out the authenticated captain by invalidating the JWT token. It requires a valid JWT token in the request header or cookies.
+
+## HTTP Method
+
+`GET`
+
+## Request
+
+### Headers
+
+- `Authorization`: `Bearer <token>` (required)
+
+### Cookies
+
+- `token`: JWT token (optional, if not provided in headers)
+
+## Response
+
+- `message`: string (Logout confirmation message)
