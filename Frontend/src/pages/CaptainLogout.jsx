@@ -1,21 +1,21 @@
 import React from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export const UserLogout = () => {
-  const token = localStorage.getItem("userToken");
+export const CaptainLogout = () => {
+  const token = localStorage.getItem("captainToken");
   const navigate = useNavigate();
 
   axios
-    .get(`${import.meta.env.VITE_BASE_URL}/users/logout`, {
+    .get(`${import.meta.env.VITE_BASE_URL}/captains/logout`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     .then((response) => {
       if (response.status === 200) {
-        localStorage.removeItem("userToken");
-        navigate("/login");
+        localStorage.removeItem("captainToken");
+        navigate("/captain-login");
       }
     })
     .catch((error) => {
@@ -24,4 +24,4 @@ export const UserLogout = () => {
   return <></>;
 };
 
-export default UserLogout;
+export default CaptainLogout;

@@ -32,7 +32,7 @@ const UserSignUp = () => {
     if (response.status === 201) {
       const data = response.data;
       setUser(data.user);
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("userToken", data.token);
       navigate("/home");
     }
 
@@ -74,8 +74,7 @@ const UserSignUp = () => {
                 type="text"
                 name="last_name"
                 placeholder="Last Name"
-                required
-              />
+                />
             </div>
             <h3 className="text-lg font-medium mb-2">What's your email</h3>
             <input
@@ -98,7 +97,7 @@ const UserSignUp = () => {
               required
             />
             <button className="bg-[#111] text-white font-semibold mb-3 rounded px-4 py-2 w-full text-base placeholder:text-base">
-              Login
+              Register
             </button>
           </form>
           <p className="text-center">
