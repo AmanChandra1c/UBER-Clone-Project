@@ -5,12 +5,13 @@ import UserLogin from "../pages/UserLogin";
 import UserSignUp from "../pages/UserSignUp";
 import CaptainLogin from "../pages/CaptainLogin";
 import CaptainSignUp from "../pages/CaptainSignUp";
-import Home from "../pages/Home";
+import UserHome from "../pages/UserHome";
 import CaptainHome from "../pages/CaptainHome";
 import UserLogout from "../pages/UserLogout";
 import UserProtectWrapper from "../pages/UserProtectWrapper";
 import CaptainProtectWrapper from "../pages/CaptainProtectWrapper";
 import CaptainLogout from "../pages/CaptainLogout";
+import Riding from "../pages/Riding";
 
 const PageRoutes = () => {
   return (
@@ -25,7 +26,7 @@ const PageRoutes = () => {
           path="/home"
           element={
             <UserProtectWrapper>
-              <Home />
+              <UserHome />
             </UserProtectWrapper>
           }
         />
@@ -37,6 +38,7 @@ const PageRoutes = () => {
             </UserProtectWrapper>
           }
         />
+        <Route path="/user/ride" element={<Riding />} />
         <Route
           path="/captain-home"
           element={
