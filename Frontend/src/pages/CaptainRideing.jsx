@@ -1,43 +1,26 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineLogout } from "react-icons/md";
-import CaptainDetails from "../components/CaptainDetails";
-import RidePopUp from "../components/RidePopUp";
+import { RiArrowUpWideLine } from "react-icons/ri";
+import FinishRide from "../components/FinishRide";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import ConfirmRidePopUp from "../components/ConfirmRidePopUp";
 
-const CaptainHome = () => {
-  const [ridePopup, setRidePopup] = useState(true);
-  const ridePopupref = useRef("");
-  const [confirmRidePopup,setConfirmRidePopup] = useState(false);
-  const confirmRidePopupref = useRef("");
-  
+const CaptainRiding = () => {
+  const [finishRide, setFinishRide] = useState(false);
+  const finishRideref = useRef("");
 
-  useGSAP(() => {
-    if (ridePopup) {
-      gsap.to(ridePopupref.current, {
-        transform: "translateY(0)",
-      });
-    } else {
-      gsap.to(ridePopupref.current, {
-        transform: "translateY(100%)",
-      });
-    }
-  }, [ridePopup]);
-
-  useGSAP(() => {
-    if (confirmRidePopup) {
-      gsap.to(confirmRidePopupref.current, {
-        transform: "translateY(0)",
-        height: "100%"
-      });
-    } else {
-      gsap.to(confirmRidePopupref.current, {
-        transform: "translateY(100%)",
-      });
-    }
-  }, [confirmRidePopup]);
+   useGSAP(() => {
+     if (finishRide ) {
+       gsap.to(finishRideref.current, {
+         transform: "translateY(0)",
+       });
+     } else {
+       gsap.to(finishRideref.current, {
+         transform: "translateY(100%)",
+       });
+     }
+   }, [finishRide]);
 
   return (
     <>
@@ -55,34 +38,41 @@ const CaptainHome = () => {
             <MdOutlineLogout />
           </Link>
         </div>
-        <div className="h-3/5 w-full">
+        <div className="h-4/5 w-full">
           <img
             className="h-full w-full"
             src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
             alt=""
           />
         </div>
-        <div className="h-2/5 p-3 mt-2">
-          <CaptainDetails />
+        <div className="h-1/5 p-6 flex items-center justify-between relative bg-yellow-400">
+          <h5
+            onClick={() => {
+              setFinishRide(true);
+            }}
+            className=" text-2xl absolute top-0 p-1 left-[50%] -translate-x-[50%]"
+          >
+            <RiArrowUpWideLine />
+          </h5>
+          <h4 className="text-xl font-semibold">4 KM away</h4>
+          <button
+            onClick={() => {
+                setFinishRide(true);
+            }}
+            className="bg-green-600 text-white font-semibold p-3 px-10 rounded-lg"
+          >
+            Complete Ride
+          </button>
         </div>
         <div
-          ref={ridePopupref}
+          ref={finishRideref}
           className="fixed w-full z-10  bottom-0 translate-y-full bg-white px-3 py-6 pt-12"
         >
-          <RidePopUp
-            setRidePopup={setRidePopup}
-            setConfirmRidePopup={setConfirmRidePopup}
-          />
-        </div>
-        <div
-          ref={confirmRidePopupref}
-          className="fixed w-full z-10  bottom-0 translate-y-full bg-white px-3 py-6 pt-12"
-        >
-          <ConfirmRidePopUp setConfirmRidePopup={setConfirmRidePopup} />
+          <FinishRide setFinishRide={setFinishRide} />
         </div>
       </div>
     </>
   );
 };
 
-export default CaptainHome;
+export default CaptainRiding;

@@ -12,6 +12,7 @@ import UserProtectWrapper from "../pages/UserProtectWrapper";
 import CaptainProtectWrapper from "../pages/CaptainProtectWrapper";
 import CaptainLogout from "../pages/CaptainLogout";
 import Riding from "../pages/Riding";
+import CaptainRiding from "../pages/CaptainRideing";
 
 const PageRoutes = () => {
   return (
@@ -55,6 +56,7 @@ const PageRoutes = () => {
             </CaptainProtectWrapper>
           }
         />
+        <Route path="/captain-riding" element={<CaptainRiding />} />
       </Routes>
     </>
   );
