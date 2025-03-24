@@ -7,6 +7,7 @@ const cookieparser = require("cookie-parser");
 const database = require("./DB/db");
 const userRoutes = require("./routes/user.routes");
 const captainRoutes = require("./routes/captain.routes");
+const mapsRoutes = require("./routes/maps.routes");
 
 // Connect to MongoDB database
 database();
@@ -26,7 +27,6 @@ app.use("/users", userRoutes);
 
 // Captain routes
 app.use("/captains", captainRoutes);  
-
 
 
 module.exports = app;
